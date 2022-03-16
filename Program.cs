@@ -33,28 +33,15 @@
             switch (userInput)
             {
                case 1:
-                  Console.Clear();
-                  Console.WriteLine($"-------------------------------------------------------------------------");
-                  Console.WriteLine($"{"KOMPUTER AKTIF",43}");
-                  Console.WriteLine($"-------------------------------------------------------------------------\n");
                   DisplayComputerActive();
                   break;
                case 2:
                   DisplayRentalComputer();
                   break;
                case 3:
-                  Console.Clear();
-                  Console.WriteLine($"-------------------------------------------------------------------------");
-                  Console.WriteLine($"{"EDIT KOMPUTER AKTIF",47}");
-                  Console.WriteLine($"-------------------------------------------------------------------------");
-
                   DisplayEditComputer();
                   break;
                case 4:
-                  Console.Clear();
-                  Console.WriteLine($"-------------------------------------------------------------------------");
-                  Console.WriteLine($"{"HAPUS KOMPUTER AKTIF",47}");
-                  Console.WriteLine($"-------------------------------------------------------------------------");
                   DisplayDeleteComputer();
                   break;
                case 5:
@@ -72,8 +59,18 @@
          }
       }
 
-      public static void DisplayComputerActive()
+      public static void DisplayComputerActive(bool isDisplayHeader = true)
       {
+         bool displayHeader = isDisplayHeader;
+
+         if (displayHeader)
+         {
+            Console.Clear();
+            Console.WriteLine($"-------------------------------------------------------------------------");
+            Console.WriteLine($"{"KOMPUTER AKTIF",43}");
+            Console.WriteLine($"-------------------------------------------------------------------------\n");
+         }
+
          if (computerActive.Count == 0)
          {
             Console.WriteLine($"===================== TIDAK ADA KOMPUTER YANG AKTIF =====================");
@@ -157,7 +154,12 @@
          string? Name;
          int No, Hour;
 
-         DisplayComputerActive();
+         Console.Clear();
+         Console.WriteLine($"-------------------------------------------------------------------------");
+         Console.WriteLine($"{"EDIT KOMPUTER AKTIF",47}");
+         Console.WriteLine($"-------------------------------------------------------------------------");
+
+         DisplayComputerActive(false);
 
          if (computerActive.Count != 0)
          {
@@ -213,7 +215,14 @@
       public static void DisplayDeleteComputer()
       {
          int No;
-         DisplayComputerActive();
+
+         Console.Clear();
+         Console.WriteLine($"-------------------------------------------------------------------------");
+         Console.WriteLine($"{"HAPUS KOMPUTER AKTIF",47}");
+         Console.WriteLine($"-------------------------------------------------------------------------");
+
+         DisplayComputerActive(false);
+
 
          if (computerActive.Count != 0)
          {
